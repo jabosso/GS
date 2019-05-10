@@ -1,5 +1,8 @@
 # Soccer Reporter
-[![N|Solid](https://i.ibb.co/0KjXMW1/Bobo-Code-Tag.png)](https://github.com/jabosso)
+
+[![N|Solid](https://i.ibb.co/CHp6mdz/Bobo-Code-Tag.png)](https://github.com/jabosso)
+
+--
 Soccer Reporter is a Project in progress to build a Soccer repoter based on AI.
 ## Tech 
 
