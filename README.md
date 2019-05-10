@@ -14,8 +14,8 @@ And of course there is  a [public repository][repo] on GitHub.
 ## Models.py[Models]
 * Classifier
 | function | input |
-|---|---|
-|     __init__     |  input_shape                      |
+| --- |---|
+|     __init__     |  input_shape                     |
 |      build_model |  input_tensor, reshape_dimension  |
 
 
