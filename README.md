@@ -16,29 +16,10 @@ And of course there is  a [public repository][repo] on GitHub.
 
 
 * Classifier
-<<<<<<< HEAD
-
   |  Function   |             Inputs              | Output |
   | :---------: | :-----------------------------: | :----: |
   | constructor |           input_shape           |  none  |
   | build_model | input_tensor, reshape_dimension | model  |
-
-  
-=======
-| function | input |
-| --- |---|
-|     __init__     |  input_shape                     |
-|      build_model |  input_tensor, reshape_dimension  |
->>>>>>> 2be7c02bd14fe8059bcae403c605bf1e2eeb7a8f
-
-
-
-
-
-
-
-
-
 
 
 ### Todos
