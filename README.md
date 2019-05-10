@@ -13,8 +13,8 @@ And of course there is  a [public repository][repo] on GitHub.
 
 ## Models.py[Models]
 * Classifier
-|__init__     | input_shape                     |
-| build_model | input_tensor, reshape_dimension |
+|     __init__     |  input_shape                      |
+|      build_model |  input_tensor, reshape_dimension  |
 
 
 
