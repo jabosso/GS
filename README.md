@@ -11,10 +11,18 @@ Soccer Reporter is a Project in progress to build a Soccer repoter based on AI.
 
 And of course there is  a [public repository][repo] on GitHub.
 
-## Models.py[Models]
+[Models.py]
+
+
+
 * Classifier
-|__init__ | input_shape |
-| build_model | input_tensor, reshape_dimension |
+
+  |  Function   |             Inputs              | Output |
+  | :---------: | :-----------------------------: | :----: |
+  | constructor |           input_shape           |  none  |
+  | build_model | input_tensor, reshape_dimension | model  |
+
+  
 
 
 
@@ -33,12 +41,13 @@ And of course there is  a [public repository][repo] on GitHub.
 ---
 ### License 
 
-[![N|Solid](https://i.ibb.co/0KjXMW1/Bobo-Code-Tag.png)](https://github.com/jabosso)
+[![N|Solid](https://i.ibb.co/CHp6mdz/Bobo-Code-Tag.png)](https://github.com/jabosso)
 
 
 
 
-   [repo]: <https://github.com/jabosso/GS>
-   [Python]: <https://www.python.org/>
-   [Keras]: <https://keras.io/>
- 
+[repo]: <https://github.com/jabosso/GS>
+[Python]: <https://www.python.org/>
+[Keras]: <https://keras.io/>
+[Models.py]: <https://github.com/jabosso/GS/blob/master/Models.py>
+
