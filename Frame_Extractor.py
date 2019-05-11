@@ -8,29 +8,13 @@ class Extractor_Of_Frame():
         self.data_file=[]
         self.root_path= 'SoccerNet/SoccerNet-code/data'
  #code_action function       
-    def code_Action(self, action):
-        if (action== 'soccer-ball'):
-            code_act = 'scb'
-        elif ((action=='y-card')or(action=='r-card')):
-            code_act = 'crd'
-        elif (action=='substitution-in'):
-            code_act = 'sbs'
-        elif (action=='no-events'):
-            code_act = 'nev'
-        else:
-            code_act = 'ukn'
-        return code_act    
+
 #check_already_exist function
     def check_Already_Exist(self,path):
         print(path)
         d, code, game, time = path
         return bool (os.path.exists(os.path.join(self.root_path,d,code, game, time)))
-#time_Extractor function
-    def time_Extractor(self,action):
-        time = action['gameTime'].split(' ')
-        final_time = time[2]
-        game_section = time[0]
-        return game_section, final_time
+
 #get_Nb_Frames_For_Video function
     def get_Nb_Frames_For_Video(self, path, code_act, game_section,t):
         generated_files = glob.glob(os.path.join(self.root_path, path, 
