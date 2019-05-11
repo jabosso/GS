@@ -1,4 +1,5 @@
 import os, os.path , json
+#------------------------------------------------------------------------------
 class Annotation():
     def __init__(self):
         print ('Annotation tool')
@@ -33,9 +34,9 @@ class Annotation():
         main_src = data['UrlLocal']
         annotation = data['annotations']
     
-#on annotation we have all the current annotation of this game, let's make a new set of annotation   
+   
         nb_Real_Annotation = len(annotation)
-        for i in range(nb_Real_Annotation-1):
+        for i in range(0,nb_Real_Annotation-1,3):
             t_temp = annotation[i]['gameTime']
             game_section_1 , _,  t_1 = t_temp.split(' ')
             t_temp = annotation[i+1]['gameTime']
