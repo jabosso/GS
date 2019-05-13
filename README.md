@@ -30,4 +30,4 @@ We can check the code of this step in [Frame_Extractor.py]
  [Python]:<https://www.python.org/>
  [Keras]:<https://keras.io/>
  [repo]:<https://github.com/jabosso/GS>
-[Frame_EXTractor.py]:<https://github.com/jabosso/GS/Frame_extractor.py>
+[Frame_EXTractor.py]:<https://github.com/jabosso/GS/blob/master/Frame_Extractor.py>
