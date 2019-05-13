@@ -9,6 +9,10 @@ Soccer Reporter is a project in progress to built a Soccer reporter based on AI.
 
 And  there is a [public repository][repo] on GitHUb with the following files :
 
+First step of our original pipeline is the extraction of frames form videos by reading the annotation of SoccerNet dataset.
+
+We can check the code of this step in [Frame_Extractor.py]
+
 * [Utility.py]
 
 
@@ -26,3 +30,4 @@ And  there is a [public repository][repo] on GitHUb with the following files :
  [Python]:<https://www.python.org/>
  [Keras]:<https://keras.io/>
  [repo]:<https://github.com/jabosso/GS>
+[Frame_EXTractor.py]:<https://github.com/jabosso/GS/Frame_extractor.py>
