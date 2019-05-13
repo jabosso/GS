@@ -59,22 +59,22 @@ class Annotation():
 #-----------------------------------------------------------------------------
 class Frame():
     def __init__(self):
+        self.annotation_tool = Annotation()
         print ('frame_tool')
+        
     def check_Already_Extracted(self, path, code_act, game_section, t):
-        return bool(os.path.exists(os.path.join(self.root_path, path,code_act, game_section+'_'+t+'_00001.jpg')))
+        return bool(os.path.exists(os.path.join( path,code_act, game_section+'_'+t+'_00001.jpg')))
     def get_Nb_Frames_For_Video(self, path, code_act, game_section,t):
-        generated_files = glob.glob(os.path.join(self.root_path, path,code_act+game_section+'_'+t+'*.jpg'))  
+        generated_files = glob.glob(os.path.join(path,code_act+game_section+'_'+t+'*.jpg'))  
         return len(generated_files)
     def extract_From_Video(self, path, game_code):
         self.game = game_code
-        data = json.load(open(os.path.join(self.root_path+ path)))
-       
+        data = json.load(open(os.path.join(path)))       
         main_src = data['UrlLocal']
-        annotation = data['annotations']
-       
+        annotation = data['annotations']       
         for action in annotation:
-            code_act = self.code_Action(action['label'])
-            game_section, t = self.time_Extractor(action)
+            code_act = self.annotation_tool.code_Action(action['label'])
+            game_section, t = self.annotation_tool.time_Extractor(action)
             src = os.path.join('SoccerNet',main_src+game_section+'.mkv')
             dest =os.path.join('data',code_act, self.game, game_section+'_'+t)            
             dest = dest.replace('\\','/')            
