@@ -19,7 +19,7 @@ We can check the code of this step in [Frame_Extractor.py]
 
 ## TO DO LIST 
 - [x] create artificial annotation 
-- [ ] extract frames from videos
+- [x] extract frames from videos
 - [ ] split dataset in train, validation and test
 - [ ]  preprocessing data
 - [ ] train nets
