@@ -78,14 +78,16 @@ class Frame():
             code_act = self.annotation_tool.code_Action(action['label'])
             game_section, t = self.annotation_tool.time_Extractor(action)
             src = os.path.join('SoccerNet',main_src+game_section+'.mkv')
-            dest =os.path.join('data',code_act, self.game, game_section+'_'+t)            
-            dest = dest.replace('\\','/')            
-            dest_s =dest.split('/')
+            dest =os.path.join('Data',code_act, self.game, game_section+'_'+t)             
+            dest = dest.replace(':','_')
+            dest = dest.replace('\\','/') 
+            dest_s = dest.split('/')
+            
+            
             if not self.path_tool.check_Already_Exist(dest):
                 print('creo directory',dest)
-                #os.makedirs(os.path.join(self.root_path,dest_s[0],dest_s[1],dest_s[2],dest_s[3]))
-            dest_f =os.path.join(self.path_tool.complete_Path(dest) ,
-                                 code_act+game_section+'_'+t+'_%05d.jpg')
+                os.makedirs(self.path_tool.root + '/' +dest)
+            dest_f =os.path.join(self.path_tool.complete_Path(dest),code_act+game_section+'_'+t+'_%05d.jpg')
             if not self.check_Already_Extracted(dest, code_act, game_section,t):
                 print('estraggo frame per ',dest)
                 #call(["ffmpeg","-i",src,"-r","10","-ss","00:"+t,"-t","00:01:00", dest_f])
@@ -94,7 +96,7 @@ class Frame():
             nb_frames =self.get_Nb_Frames_For_Video(dest, code_act, game_section, t)
             self.data_file.append([code_act+game_section+'__'+t, nb_frames,dest_s[2]])
            
-        with open ('Data/data_file.csv', 'w') as fout :
+        with open (self.path_tool.complete_Path('Data/data_file.csv'), 'w') as fout :
              writer = csv.writer(fout)
              writer.writerows(self.data_file)  
 #------------------------------------------------------------------------------
