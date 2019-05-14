@@ -1,4 +1,4 @@
-import os, os.path, json
+import os, os.path, json, glob, csv
 #----------------------------------------------------------------------------
 class Annotation():
     def __init__(self):
@@ -60,6 +60,8 @@ class Annotation():
 class Frame():
     def __init__(self):
         self.annotation_tool = Annotation()
+        self.path_tool = Path('SoccerNet')
+        self.data_file = []
         print ('frame_tool')
         
     def check_Already_Extracted(self, path, code_act, game_section, t):
@@ -79,10 +81,10 @@ class Frame():
             dest =os.path.join('data',code_act, self.game, game_section+'_'+t)            
             dest = dest.replace('\\','/')            
             dest_s =dest.split('/')
-            if not self.check_Already_Exist(dest_s):
+            if not self.path_tool.check_Already_Exist(dest):
                 print('creo directory',dest)
                 #os.makedirs(os.path.join(self.root_path,dest_s[0],dest_s[1],dest_s[2],dest_s[3]))
-            dest_f =os.path.join(self.root_path, dest ,
+            dest_f =os.path.join(self.path_tool.complete_Path(dest) ,
                                  code_act+game_section+'_'+t+'_%05d.jpg')
             if not self.check_Already_Extracted(dest, code_act, game_section,t):
                 print('estraggo frame per ',dest)
@@ -92,11 +94,17 @@ class Frame():
             nb_frames =self.get_Nb_Frames_For_Video(dest, code_act, game_section, t)
             self.data_file.append([code_act+game_section+'__'+t, nb_frames,dest_s[2]])
            
-        with open ('data_file.csv', 'w') as fout :
+        with open ('Data/data_file.csv', 'w') as fout :
              writer = csv.writer(fout)
              writer.writerows(self.data_file)  
 #------------------------------------------------------------------------------
-             
-        
-        
-     
+
+class Path():
+    def __init__(self, main_root):
+        self.root = main_root
+        print('path_tool')
+    def complete_Path(self,path):
+        print (path)
+        return (self.root + '/' + path)
+    def check_Already_Exist(self,path):
+         return bool(os.path.exists(self.complete_Path(path)))    
