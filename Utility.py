@@ -94,7 +94,7 @@ class Frame():
             else:
                 print(dest_f, ' già estratto')
             nb_frames =self.get_Nb_Frames_For_Video(dest, code_act, game_section, t)
-            self.data_file.append([code_act+game_section+'__'+t, nb_frames,dest_s[2]])
+            self.data_file.append([code_act+game_section+'__'+t, nb_frames,dest_f])
            
         with open (self.path_tool.complete_Path('Data/data_file.csv'), 'w') as fout :
              writer = csv.writer(fout)
