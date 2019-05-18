@@ -1,7 +1,6 @@
 
 from keras.utils import to_categorical
-import glob, os, os.path
-import nunmpy as np
+import numpy as np
 from Models import R_Extractor
 class Preprocessing_Data():
     def __init__(self):
@@ -49,4 +48,4 @@ for line in f :
     samples_list.append(sequence)
     label_list.append(p.get_class_one_hot(game_code[0:3]))
 X_train = np.array(samples_list)
-Y_train = np.array(label_list)            
+Y_train = np.array(label_list)  

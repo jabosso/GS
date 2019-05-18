@@ -51,12 +51,12 @@ class R_Extractor():
         self.model = Model(inputs = base_model.input,
                            output = net_out
                            )
-        def extract(self, image_path):
-            img = image.load_img(image_path, target_size = (224,224,3))###
-            x = image.img_to_array(img)
-            x = np.expand_dims(x, axis = 0)
-            features = self.model.predict(x)
-            return features
+    def extract(self, image_path):
+        img = image.load_img(image_path, target_size = (224,224,3))###
+        x = image.img_to_array(img)
+        x = np.expand_dims(x, axis = 0)
+        features = self.model.predict(x)
+        return features
 #-------------Some line to test R_Extractor------------------------------------
 # 
 #r = R_Extractor()
