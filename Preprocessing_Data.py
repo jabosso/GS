@@ -1,12 +1,24 @@
 
 from keras.utils import to_categorical
-
+import glob, os, os.path
+import nunmpy as np
+from Models import R_Extractor
 class Preprocessing_Data():
     def __init__(self):
+        self.extractor = R_Extractor() 
+        self.feat_shape = (0, 2048)
         print('Preprocessor')
-    def getFrames(self,name, game, action):
-        print('recupero i frame')
-        
+    def getFrames(self,element):
+        element = element.replace('%05d.jpg','')
+        frames = sorted(glob.glob(os.path.join(element+'*.jpg')))
+        return frames    
+    def generateFeatures(self, frames, game_code):
+        f_sequence = np.empty(self.feat_shape, dtype= object)
+        for image in frames:
+            features = self.extractor.extract(image)
+            features = np.expand_dims(features, axis=0) 
+            f_sequence = np.concatenate((f_sequence, features), axis = 0)       
+        return f_sequence        
     def rescale_List(self, input_list, size):
         assert len(input_list) >= size
         skip = len(input_list) // size
@@ -24,11 +36,17 @@ class Preprocessing_Data():
         label_hot = to_categorical(label_encoded, 4) 
         assert len(label_hot) == 4
         return label_hot  
-p = Preprocessing_Data()        
-f = open("file_test.txt", "r")
+p = Preprocessing_Data()  
+sequence_length = 100    
+samples_list = []
+label_list = [] 
+f = open("file_train.txt", "r")
 for line in f :  
-    a,b = line.split(',')
-    a_coded = p.get_class_one_hot(a[0:3])
-   
-
-            
+    game_code, source_path = line.split(',')
+    frames = p.getFrames(source_path)
+    frames = p.rescale_List(frames, sequence_length)
+    sequence = p.generateFeatures(frames,game_code)
+    samples_list.append(sequence)
+    label_list.append(p.get_class_one_hot(game_code[0:3]))
+X_train = np.array(samples_list)
+Y_train = np.array(label_list)            
