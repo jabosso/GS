@@ -1,7 +1,9 @@
 
 from keras.utils import to_categorical
 import numpy as np
+import os, glob, os.path
 from Models import R_Extractor
+from keras.preprocessing.image import ImageDataGenerator
 class Preprocessing_Data():
     def __init__(self):
         self.extractor = R_Extractor() 
@@ -39,6 +41,7 @@ p = Preprocessing_Data()
 sequence_length = 100    
 samples_list = []
 label_list = [] 
+datagen = ImageDataGenerator(zca_whitening = True)
 f = open("file_train.txt", "r")
 for line in f :  
     game_code, source_path = line.split(',')
